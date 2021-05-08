@@ -1,4 +1,5 @@
 import type { Settings as LayoutSettings } from '@ant-design/pro-layout';
+import type { BasicLayoutProps } from '@ ant-design/pro-layout';
 import { PageLoading } from '@ant-design/pro-layout';
 import { notification } from 'antd';
 import type { RequestConfig, RunTimeLayoutConfig } from 'umi';
@@ -8,6 +9,8 @@ import Footer from '@/components/Footer';
 import type { ResponseError } from 'umi-request';
 import { currentUser as queryCurrentUser } from './services/ant-design-pro/api';
 import { BookOutlined, LinkOutlined } from '@ant-design/icons';
+import defaultSettings from '../config/defaultSettings';
+import { SettingDrawer } from '@ant-design/pro-layout';
 
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
@@ -40,7 +43,7 @@ export async function getInitialState(): Promise<{
     return {
       fetchUserInfo,
       currentUser,
-      settings: {},
+      settings: defaultSettings,
     };
   }
   return {
@@ -97,37 +100,57 @@ export const request: RequestConfig = {
   },
 };
 
+
 // ProLayout 支持的api https://procomponents.ant.design/components/layout
-export const layout: RunTimeLayoutConfig = ({ initialState }) => {
-  return {
-    rightContentRender: () => <RightContent />,
-    disableContentMargin: false,
-    waterMarkProps: {
-      content: initialState?.currentUser?.name,
-    },
-    footerRender: () => <Footer />,
-    onPageChange: () => {
-      const { location } = history;
-      // 如果没有登录，重定向到 login
-      if (!initialState?.currentUser && location.pathname !== loginPath) {
-        history.push(loginPath);
-      }
-    },
-    links: isDev
-      ? [
-          <Link to="/umi/plugin/openapi" target="_blank">
-            <LinkOutlined />
-            <span>openAPI 文档</span>
-          </Link>,
-          <Link to="/~docs">
-            <BookOutlined />
-            <span>业务组件文档</span>
-          </Link>,
-        ]
-      : [],
-    menuHeaderRender: undefined,
-    // 自定义 403 页面
-    // unAccessible: <div>unAccessible</div>,
-    ...initialState?.settings,
-  };
+export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) => {
+    return {
+        rightContentRender: () => <RightContent />,
+        disableContentMargin: false,
+        waterMarkProps: {
+        content: initialState?.currentUser?.name,
+        },
+        footerRender: () => <Footer />,
+        onPageChange: () => {
+        const { location } = history;
+        // 如果没有登录，重定向到 login
+        if (!initialState?.currentUser && location.pathname !== loginPath) {
+            history.push(loginPath);
+        }
+        },
+        links: isDev
+        ? [
+            <Link to="/umi/plugin/openapi" target="_blank">
+                <LinkOutlined />
+                <span>openAPI 文档</span>
+            </Link>,
+            <Link to="/~docs">
+                <BookOutlined />
+                <span>业务组件文档</span>
+            </Link>,
+            ]
+        : [],
+        menuHeaderRender: undefined,
+        // 自定义 403 页面
+        // unAccessible: <div>unAccessible</div>,
+        ...initialState?.settings,
+
+        childrenRender: (dom) => {
+            return (
+              <>
+                {dom}
+                <SettingDrawer
+                  settings={initialState?.settings}
+                  disableUrlParams
+                  onSettingChange={(nextSettings) =>
+                    setInitialState({
+                      ...initialState,
+                      settings: nextSettings,
+                    })
+                  }
+                />
+              </>
+            );
+          },
+
+    };
 };
