@@ -41,93 +41,93 @@ const Step1: React.FC<Step1Props> = (props) => {
       });
     }
   };
-  return (
-    <>
-      <Form
-        {...formItemLayout}
-        form={form}
-        layout="horizontal"
-        className={styles.stepForm}
-        hideRequiredMark
-        initialValues={data}
-      >
-        <Form.Item
-          label="付款账户"
-          name="payAccount"
-          rules={[{ required: true, message: '请选择付款账户' }]}
+    return (
+      <>
+        <Form
+          {...formItemLayout}
+          form={form}
+          layout="horizontal"
+          className={styles.stepForm}
+          hideRequiredMark
+          initialValues={data}
         >
-          <Select placeholder="test@example.com">
-            <Option value="ant-design@alipay.com">ant-design@alipay.com</Option>
-          </Select>
-        </Form.Item>
-        <Form.Item label="收款账户">
-          <Input.Group compact>
-            <Select defaultValue="alipay" style={{ width: 100 }}>
-              <Option value="alipay">支付宝</Option>
-              <Option value="bank">银行账户</Option>
+          <Form.Item
+            label="Payment account"
+            name="payAccount"
+            rules={[{ required: true, message:'Please select a payment account' }]}
+          >
+            <Select placeholder="test@example.com">
+              <Option value="ant-design@alipay.com">ant-design@alipay.com</Option>
             </Select>
-            <Form.Item
-              noStyle
-              name="receiverAccount"
-              rules={[
-                { required: true, message: '请输入收款人账户' },
-                { type: 'email', message: '账户名应为邮箱格式' },
-              ]}
-            >
-              <Input style={{ width: 'calc(100% - 100px)' }} placeholder="test@example.com" />
-            </Form.Item>
-          </Input.Group>
-        </Form.Item>
-        <Form.Item
-          label="收款人姓名"
-          name="receiverName"
-          rules={[{ required: true, message: '请输入收款人姓名' }]}
-        >
-          <Input placeholder="请输入收款人姓名" />
-        </Form.Item>
-        <Form.Item
-          label="转账金额"
-          name="amount"
-          rules={[
-            { required: true, message: '请输入转账金额' },
-            {
-              pattern: /^(\d+)((?:\.\d+)?)$/,
-              message: '请输入合法金额数字',
-            },
-          ]}
-        >
-          <Input prefix="￥" placeholder="请输入金额" />
-        </Form.Item>
-        <Form.Item
-          wrapperCol={{
-            xs: { span: 24, offset: 0 },
-            sm: {
-              span: formItemLayout.wrapperCol.span,
-              offset: formItemLayout.labelCol.span,
-            },
-          }}
-        >
-          <Button type="primary" onClick={onValidateForm}>
-            下一步
-          </Button>
-        </Form.Item>
-      </Form>
-      <Divider style={{ margin: '40px 0 24px' }} />
-      <div className={styles.desc}>
-        <h3>说明</h3>
-        <h4>转账到支付宝账户</h4>
-        <p>
-          如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。
-        </p>
-        <h4>转账到银行卡</h4>
-        <p>
-          如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。如果需要，这里可以放一些关于产品的常见问题说明。
-        </p>
-      </div>
-    </>
-  );
-};
-
-export default connect(({ formAndstepForm }: { formAndstepForm: StateType }) => ({
-  data: formAndstepForm.step,
-}))(Step1);
+          </Form.Item>
+          <Form.Item label="Receiving Account">
+            <Input.Group compact>
+              <Select defaultValue="alipay" style={{ width: 100 }}>
+                <Option value="alipay">Alipay</Option>
+                <Option value="bank">Bank account</Option>
+              </Select>
+              <Form.Item
+                noStyle
+                name="receiverAccount"
+                rules={[
+                  {required: true, message:'Please enter the payee account' },
+                  {type:'email', message:'Account name should be in email format' },
+                ]}
+              >
+                <Input style={{ width:'calc(100%-100px)' }} placeholder="test@example.com" />
+              </Form.Item>
+            </Input.Group>
+          </Form.Item>
+          <Form.Item
+            label="Payee Name"
+            name="receiverName"
+            rules={[{ required: true, message:'Please enter the payee name' }]}
+          >
+            <Input placeholder="Please enter the payee name" />
+          </Form.Item>
+          <Form.Item
+            label="Transfer amount"
+            name="amount"
+            rules={[
+              {required: true, message:'Please enter the transfer amount' },
+              {
+                pattern: /^(\d+)((?:\.\d+)?)$/,
+                message:'Please enter a legal amount number',
+              },
+            ]}
+          >
+            <Input prefix="$" placeholder="Please enter the amount" />
+          </Form.Item>
+          <Form.Item
+            wrapperCol={{
+              xs: {span: 24, offset: 0 },
+              sm: {
+                span: formItemLayout.wrapperCol.span,
+                offset: formItemLayout.labelCol.span,
+              },
+            }}
+          >
+            <Button type="primary" onClick={onValidateForm}>
+              Next step
+            </Button>
+          </Form.Item>
+        </Form>
+        <Divider style={{ margin: '40px 0 24px' }} />
+        <div className={styles.desc}>
+          <h3>Description</h3>
+          <h4>Transfer to Alipay account</h4>
+          <p>
+            If necessary, some common questions about the product can be put here. If necessary, some common questions about the product can be put here. If necessary, some common questions about the product can be put here.
+          </p>
+          <h4>Transfer to bank card</h4>
+          <p>
+            If necessary, some common questions about the product can be put here. If necessary, some common questions about the product can be put here. If necessary, some common questions about the product can be put here.
+          </p>
+        </div>
+      </>
+    );
+  };
+  
+  export default connect(({ formAndstepForm }: {formAndstepForm: StateType }) => ({
+    data: formAndstepForm.step,
+  }))(Step1);

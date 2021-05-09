@@ -1,15 +1,15 @@
-import { PlusOutlined } from '@ant-design/icons';
-import { Button, Card, List, Typography } from 'antd';
-import React, { Component } from 'react';
+import {PlusOutlined} from'@ant-design/icons';
+import {Button, Card, List, Typography} from'antd';
+import React, {Component} from'react';
 
-import { PageContainer } from '@ant-design/pro-layout';
-import type { Dispatch } from 'umi';
-import { connect } from 'umi';
-import type { StateType } from './model';
-import type { CardListItemDataType } from './data.d';
-import styles from './style.less';
+import {PageContainer} from'@ant-design/pro-layout';
+import type {Dispatch} from'umi';
+import {connect} from'umi';
+import type {StateType} from'./model';
+import type {CardListItemDataType} from'./data.d';
+import styles from'./style.less';
 
-const { Paragraph } = Typography;
+const {Paragraph} = Typography;
 
 interface CardListProps {
   listAndcardList: StateType;
@@ -24,9 +24,9 @@ interface CardListState {
 
 class CardList extends Component<CardListProps, CardListState> {
   componentDidMount() {
-    const { dispatch } = this.props;
+    const {dispatch} = this.props;
     dispatch({
-      type: 'listAndcardList/fetch',
+      type:'listAndcardList/fetch',
       payload: {
         count: 8,
       },
@@ -35,28 +35,28 @@ class CardList extends Component<CardListProps, CardListState> {
 
   render() {
     const {
-      listAndcardList: { list },
+      listAndcardList: {list },
       loading,
     } = this.props;
 
     const content = (
       <div className={styles.pageHeaderContent}>
         <p>
-          段落示意：蚂蚁金服务设计平台 ant.design，用最小的工作量，无缝接入蚂蚁金服生态，
-          提供跨越设计与开发的体验解决方案。
+          Paragraph: Ant.design, the service design platform of Ant Financial, seamlessly connects to the ecosystem of Ant Financial with minimal workload.
+          Provide experience solutions that span design and development.
         </p>
         <div className={styles.contentLink}>
           <a>
-            <img alt="" src="https://gw.alipayobjects.com/zos/rmsportal/MjEImQtenlyueSmVEfUD.svg" />{' '}
-            快速开始
+            <img alt="" src="https://gw.alipayobjects.com/zos/rmsportal/MjEImQtenlyueSmVEfUD.svg" />{''}
+            Quick start
           </a>
           <a>
-            <img alt="" src="https://gw.alipayobjects.com/zos/rmsportal/NbuDUAuBlIApFuDvWiND.svg" />{' '}
-            产品简介
+            <img alt="" src="https://gw.alipayobjects.com/zos/rmsportal/NbuDUAuBlIApFuDvWiND.svg" />{''}
+            Product Introduction
           </a>
           <a>
-            <img alt="" src="https://gw.alipayobjects.com/zos/rmsportal/ohOEPSYdDTNnyMbGuyLb.svg" />{' '}
-            产品文档
+            <img alt="" src="https://gw.alipayobjects.com/zos/rmsportal/ohOEPSYdDTNnyMbGuyLb.svg" />{''}
+            Product Documentation
           </a>
         </div>
       </div>
@@ -65,7 +65,7 @@ class CardList extends Component<CardListProps, CardListState> {
     const extraContent = (
       <div className={styles.extraImg}>
         <img
-          alt="这是一个标题"
+          alt="This is a title"
           src="https://gw.alipayobjects.com/zos/rmsportal/RzwpdLnhmvDJToTdfDPe.png"
         />
       </div>
@@ -94,7 +94,7 @@ class CardList extends Component<CardListProps, CardListState> {
                     <Card
                       hoverable
                       className={styles.card}
-                      actions={[<a key="option1">操作一</a>, <a key="option2">操作二</a>]}
+                      actions={[<a key="option1">action one</a>, <a key="option2">action two</a>]}
                     >
                       <Card.Meta
                         avatar={<img alt="" className={styles.cardAvatar} src={item.avatar} />}
@@ -112,7 +112,7 @@ class CardList extends Component<CardListProps, CardListState> {
               return (
                 <List.Item>
                   <Button type="dashed" className={styles.newButton}>
-                    <PlusOutlined /> 新增产品
+                    <PlusOutlined /> New product
                   </Button>
                 </List.Item>
               );

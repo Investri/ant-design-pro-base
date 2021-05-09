@@ -11,7 +11,7 @@ import TagCloud from './TagCloud';
 import TimelineChart from './TimelineChart';
 import WaterWave from './WaterWave';
 
-const yuan = (val: number | string) => `¥ ${numeral(val).format('0,0')}`;
+const yuan = (val: number | string) => `$ ${numeral(val).format('0,0')}`;
 
 const Charts = {
   yuan,

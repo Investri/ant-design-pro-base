@@ -1,16 +1,16 @@
-import { Chart, Coord, Geom, Shape, Tooltip } from 'bizcharts';
-import React, { Component } from 'react';
+import {Chart, Coord, Geom, Shape, Tooltip} from'bizcharts';
+import React, {Component} from'react';
 
-import DataSet from '@antv/data-set';
-import Debounce from 'lodash.debounce';
-import classNames from 'classnames';
-import autoHeight from '../autoHeight';
-import styles from './index.less';
+import DataSet from'@antv/data-set';
+import Debounce from'lodash.debounce';
+import classNames from'classnames';
+import autoHeight from'../autoHeight';
+import styles from'./index.less';
 
 /* eslint no-underscore-dangle: 0 */
 /* eslint no-param-reassign: 0 */
 
-const imgUrl = 'https://gw.alipayobjects.com/zos/rmsportal/gWyeGLCdFFRavBGIDzWk.png';
+const imgUrl ='https://gw.alipayobjects.com/zos/rmsportal/gWyeGLCdFFRavBGIDzWk.png';
 
 export interface TagCloudProps {
   data: {
@@ -48,11 +48,11 @@ class TagCloud extends Component<TagCloudProps, TagCloudState> {
       this.initTagCloud();
       this.renderChart(this.props);
     });
-    window.addEventListener('resize', this.resize, { passive: true });
+    window.addEventListener('resize', this.resize, {passive: true });
   }
 
   componentDidUpdate(preProps?: TagCloudProps) {
-    const { data } = this.props;
+    const {data} = this.props;
     if (preProps && JSON.stringify(preProps.data) !== JSON.stringify(data)) {
       this.renderChart(this.props);
     }
@@ -89,17 +89,17 @@ class TagCloud extends Component<TagCloudProps, TagCloudState> {
         fontSize: cfg.origin._origin.size,
         rotate: cfg.origin._origin.rotate,
         text: cfg.origin._origin.text,
-        textAlign: 'center',
+        textAlign:'center',
         fontFamily: cfg.origin._origin.font,
         fill: cfg.color,
-        textBaseline: 'Alphabetic',
+        textBaseline:'Alphabetic',
       };
     }
 
-    (Shape as any).registerShape('point', 'cloud', {
+    (Shape as any).registerShape('point','cloud', {
       drawShape(
-        cfg: { x: any; y: any },
-        container: { addShape: (arg0: string, arg1: { attrs: any }) => void },
+        cfg: {x: any; y: any },
+        container: {addShape: (arg0: string, arg1: {attrs: any }) => void },
       ) {
         const attrs = getTextAttrs(cfg);
         return container.addShape('text', {
@@ -114,9 +114,9 @@ class TagCloud extends Component<TagCloudProps, TagCloudState> {
   };
 
   renderChart = Debounce((nextProps: TagCloudProps) => {
-    // const colors = ['#1890FF', '#41D9C7', '#2FC25B', '#FACC14', '#9AE65C'];
-    const { data, height } = nextProps || this.props;
-    if (data.length < 1 || !this.root) {
+    // const colors = ['#1890FF','#41D9C7','#2FC25B','#FACC14','#9AE65C'];
+    const {data, height} = nextProps || this.props;
+    if (data.length <1 || !this.root) {
       return;
     }
 
@@ -128,19 +128,19 @@ class TagCloud extends Component<TagCloudProps, TagCloudState> {
       const range = dv.range('value');
       const [min, max] = range;
       dv.transform({
-        type: 'tag-cloud',
-        fields: ['name', 'value'],
+        type:'tag-cloud',
+        fields: ['name','value'],
         imageMask: this.imageMask,
-        font: 'Verdana',
-        size: [w, h], // 宽高设置最好根据 imageMask 做调整
+        font:'Verdana',
+        size: [w, h], // The width and height settings are best adjusted according to imageMask
         padding: 0,
         timeInterval: 5000, // max execute time
         rotate() {
           return 0;
         },
-        fontSize(d: { value: number }) {
-          const size = ((d.value - min) / (max - min)) ** 2;
-          return size * (17.5 - 5) + 5;
+        fontSize(d: {value: number }) {
+          const size = ((d.value-min) / (max-min)) ** 2;
+          return size * (17.5-5) + 5;
         },
       });
 
@@ -157,7 +157,7 @@ class TagCloud extends Component<TagCloudProps, TagCloudState> {
 
     if (!this.imageMask) {
       this.imageMask = new Image();
-      this.imageMask.crossOrigin = '';
+      this.imageMask.crossOrigin ='';
       this.imageMask.src = imgUrl;
 
       this.imageMask.onload = onload;
@@ -167,8 +167,8 @@ class TagCloud extends Component<TagCloudProps, TagCloudState> {
   }, 200);
 
   render() {
-    const { className, height } = this.props;
-    const { dv, width, height: stateHeight } = this.state;
+    const {className, height} = this.props;
+    const {dv, width, height: stateHeight} = this.state;
 
     return (
       <div
@@ -183,8 +183,8 @@ class TagCloud extends Component<TagCloudProps, TagCloudState> {
             data={dv}
             padding={0}
             scale={{
-              x: { nice: false },
-              y: { nice: false },
+              x: {nice: false },
+              y: {nice: false },
             }}
           >
             <Tooltip showTitle={false} />
@@ -197,7 +197,7 @@ class TagCloud extends Component<TagCloudProps, TagCloudState> {
               tooltip={[
                 'text*value',
                 function trans(text, value) {
-                  return { name: text, value };
+                  return {name: text, value };
                 },
               ]}
             />

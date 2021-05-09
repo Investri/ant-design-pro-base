@@ -1,22 +1,22 @@
-import { EllipsisOutlined } from '@ant-design/icons';
-import { Col, Dropdown, Menu, Row } from 'antd';
-import React, { Component } from 'react';
-import { GridContent } from '@ant-design/pro-layout';
-import type { RadioChangeEvent } from 'antd/es/radio';
-import type { RangePickerProps } from 'antd/es/date-picker/generatePicker';
-import type moment from 'moment';
-import type { Dispatch } from 'umi';
-import { connect } from 'umi';
+import {EllipsisOutlined} from'@ant-design/icons';
+import {Col, Dropdown, Menu, Row} from'antd';
+import React, {Component} from'react';
+import {GridContent} from'@ant-design/pro-layout';
+import type {RadioChangeEvent} from'antd/es/radio';
+import type {RangePickerProps} from'antd/es/date-picker/generatePicker';
+import type moment from'moment';
+import type {Dispatch} from'umi';
+import {connect} from'umi';
 
-import { getTimeDistance } from './utils/utils';
-import type { AnalysisData } from './data.d';
-import styles from './style.less';
+import {getTimeDistance} from'./utils/utils';
+import type {AnalysisData} from'./data.d';
+import styles from'./style.less';
 
-import IntroduceRow from './components/IntroduceRow';
-import SalesCard from './components/SalesCard';
-import TopSearch from './components/TopSearch';
-import ProportionSales from './components/ProportionSales';
-import OfflineData from './components/OfflineData';
+import IntroduceRow from'./components/IntroduceRow';
+import SalesCard from'./components/SalesCard';
+import TopSearch from'./components/TopSearch';
+import ProportionSales from'./components/ProportionSales';
+import OfflineData from'./components/OfflineData';
 
 type RangePickerValue = RangePickerProps<moment.Moment>['value'];
 
@@ -27,15 +27,15 @@ interface AnalysisProps {
 }
 
 interface AnalysisState {
-  salesType: 'all' | 'online' | 'stores';
+  salesType:'all' |'online' |'stores';
   currentTabKey: string;
   rangePickerValue: RangePickerValue;
 }
 
 class Analysis extends Component<AnalysisProps, AnalysisState> {
   state: AnalysisState = {
-    salesType: 'all',
-    currentTabKey: '',
+    salesType:'all',
+    currentTabKey:'',
     rangePickerValue: getTimeDistance('year'),
   };
 
@@ -44,18 +44,18 @@ class Analysis extends Component<AnalysisProps, AnalysisState> {
   timeoutId: number = 0;
 
   componentDidMount() {
-    const { dispatch } = this.props;
+    const {dispatch} = this.props;
     this.reqRef = requestAnimationFrame(() => {
       dispatch({
-        type: 'dashboardAndanalysis/fetch',
+        type:'dashboardAndanalysis/fetch',
       });
     });
   }
 
   componentWillUnmount() {
-    const { dispatch } = this.props;
+    const {dispatch} = this.props;
     dispatch({
-      type: 'dashboardAndanalysis/clear',
+      type:'dashboardAndanalysis/clear',
     });
     cancelAnimationFrame(this.reqRef);
     clearTimeout(this.timeoutId);
@@ -74,51 +74,51 @@ class Analysis extends Component<AnalysisProps, AnalysisState> {
   };
 
   handleRangePickerChange = (rangePickerValue: RangePickerValue) => {
-    const { dispatch } = this.props;
+    const {dispatch} = this.props;
     this.setState({
       rangePickerValue,
     });
 
     dispatch({
-      type: 'dashboardAndanalysis/fetchSalesData',
+      type:'dashboardAndanalysis/fetchSalesData',
     });
   };
 
-  selectDate = (type: 'today' | 'week' | 'month' | 'year') => {
-    const { dispatch } = this.props;
+  selectDate = (type:'today' |'week' |'month' |'year') => {
+    const {dispatch} = this.props;
     this.setState({
       rangePickerValue: getTimeDistance(type),
     });
 
     dispatch({
-      type: 'dashboardAndanalysis/fetchSalesData',
+      type:'dashboardAndanalysis/fetchSalesData',
     });
   };
 
-  isActive = (type: 'today' | 'week' | 'month' | 'year') => {
-    const { rangePickerValue } = this.state;
+  isActive = (type:'today' |'week' |'month' |'year') => {
+    const {rangePickerValue} = this.state;
     if (!rangePickerValue) {
-      return '';
+      return'';
     }
     const value = getTimeDistance(type);
     if (!value) {
-      return '';
+      return'';
     }
     if (!rangePickerValue[0] || !rangePickerValue[1]) {
-      return '';
+      return'';
     }
     if (
-      rangePickerValue[0].isSame(value[0] as moment.Moment, 'day') &&
-      rangePickerValue[1].isSame(value[1] as moment.Moment, 'day')
+      rangePickerValue[0].isSame(value[0] as moment.Moment,'day') &&
+      rangePickerValue[1].isSame(value[1] as moment.Moment,'day')
     ) {
       return styles.currentDate;
     }
-    return '';
+    return'';
   };
 
   render() {
-    const { rangePickerValue, salesType, currentTabKey } = this.state;
-    const { dashboardAndanalysis, loading } = this.props;
+    const {rangePickerValue, salesType, currentTabKey} = this.state;
+    const {dashboardAndanalysis, loading} = this.props;
     const {
       visitData,
       visitData2,
@@ -131,15 +131,15 @@ class Analysis extends Component<AnalysisProps, AnalysisState> {
       salesTypeDataOffline,
     } = dashboardAndanalysis;
     let salesPieData;
-    if (salesType === 'all') {
+    if (salesType ==='all') {
       salesPieData = salesTypeData;
     } else {
-      salesPieData = salesType === 'online' ? salesTypeDataOnline : salesTypeDataOffline;
+      salesPieData = salesType ==='online'? salesTypeDataOnline: salesTypeDataOffline;
     }
     const menu = (
       <Menu>
-        <Menu.Item>操作一</Menu.Item>
-        <Menu.Item>操作二</Menu.Item>
+        <Menu.Item>Operation One</Menu.Item>
+        <Menu.Item>Operation Two</Menu.Item>
       </Menu>
     );
 
@@ -181,7 +181,7 @@ class Analysis extends Component<AnalysisProps, AnalysisState> {
             <Col xl={12} lg={24} md={24} sm={24} xs={24}>
               <ProportionSales
                 dropdownGroup={dropdownGroup}
-                salesType={salesType}
+                salesType={salesType} 
                 loading={loading}
                 salesPieData={salesPieData}
                 handleChangeSalesType={this.handleChangeSalesType}

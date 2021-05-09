@@ -1,9 +1,9 @@
-import { Button, Result, Descriptions, Statistic } from 'antd';
-import React from 'react';
-import type { Dispatch } from 'umi';
-import { connect } from 'umi';
-import type { StateType } from '../../model';
-import styles from './index.less';
+import {Button, Result, Descriptions, Statistic} from'antd';
+import React from'react';
+import type {Dispatch} from'umi';
+import {connect} from'umi';
+import type {StateType} from'../../model';
+import styles from'./index.less';
 
 interface Step3Props {
   data?: StateType['step'];
@@ -11,26 +11,26 @@ interface Step3Props {
 }
 
 const Step3: React.FC<Step3Props> = (props) => {
-  const { data, dispatch } = props;
+  const {data, dispatch} = props;
   if (!data) {
     return null;
   }
-  const { payAccount, receiverAccount, receiverName, amount } = data;
+  const {payAccount, receiverAccount, receiverName, amount} = data;
   const onFinish = () => {
     if (dispatch) {
       dispatch({
-        type: 'formAndstepForm/saveCurrentStep',
-        payload: 'info',
+        type:'formAndstepForm/saveCurrentStep',
+        payload:'info',
       });
     }
   };
   const information = (
     <div className={styles.information}>
       <Descriptions column={1}>
-        <Descriptions.Item label="付款账户"> {payAccount}</Descriptions.Item>
-        <Descriptions.Item label="收款账户"> {receiverAccount}</Descriptions.Item>
-        <Descriptions.Item label="收款人姓名"> {receiverName}</Descriptions.Item>
-        <Descriptions.Item label="转账金额">
+        <Descriptions.Item label="Payment Account"> {payAccount}</Descriptions.Item>
+        <Descriptions.Item label="Receiving Account"> {receiverAccount}</Descriptions.Item>
+        <Descriptions.Item label="Payee name"> {receiverName}</Descriptions.Item>
+        <Descriptions.Item label="Transfer amount">
           <Statistic value={amount} suffix="元" />
         </Descriptions.Item>
       </Descriptions>
@@ -39,16 +39,16 @@ const Step3: React.FC<Step3Props> = (props) => {
   const extra = (
     <>
       <Button type="primary" onClick={onFinish}>
-        再转一笔
+        Another stroke
       </Button>
-      <Button>查看账单</Button>
+      <Button>View bill</Button>
     </>
   );
   return (
     <Result
       status="success"
-      title="操作成功"
-      subTitle="预计两小时内到账"
+      title="Operation successful"
+      subTitle="It is estimated to arrive within two hours"
       extra={extra}
       className={styles.result}
     >
@@ -57,6 +57,6 @@ const Step3: React.FC<Step3Props> = (props) => {
   );
 };
 
-export default connect(({ formAndstepForm }: { formAndstepForm: StateType }) => ({
+export default connect(({ formAndstepForm }: {formAndstepForm: StateType }) => ({
   data: formAndstepForm.step,
 }))(Step3);

@@ -52,7 +52,7 @@ const IntroduceRow = ({ loading, visitData }: { loading: boolean; visitData: Vis
                 defaultMessage="Daily Sales"
               />
             }
-            value={`￥${numeral(12423).format('0,0')}`}
+            value={`$${numeral(12423).format('0,0')}`}
           />
         }
         contentHeight={46}

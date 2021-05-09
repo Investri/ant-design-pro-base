@@ -1,40 +1,40 @@
-import { Avatar, Card, Col, List, Skeleton, Row, Statistic } from 'antd';
-import React, { Component } from 'react';
+import {Avatar, Card, Col, List, Skeleton, Row, Statistic} from'antd';
+import React, {Component} from'react';
 
-import type { Dispatch} from 'umi';
-import { Link, connect } from 'umi';
-import { PageContainer } from '@ant-design/pro-layout';
-import moment from 'moment';
-import Radar from './components/Radar';
-import type { ModalState } from './model';
-import EditableLinkGroup from './components/EditableLinkGroup';
-import styles from './style.less';
-import type { ActivitiesType, CurrentUser, NoticeType, RadarDataType } from './data.d';
+import type {Dispatch} from'umi';
+import {Link, connect} from'umi';
+import {PageContainer} from'@ant-design/pro-layout';
+import moment from'moment';
+import Radar from'./components/Radar';
+import type {ModalState} from'./model';
+import EditableLinkGroup from'./components/EditableLinkGroup';
+import styles from'./style.less';
+import type {ActivitiesType, CurrentUser, NoticeType, RadarDataType} from'./data.d';
 
 const links = [
   {
-    title: '操作一',
-    href: '',
+    title:'Operation One',
+    href:'',
   },
   {
-    title: '操作二',
-    href: '',
+    title:'Operation Two',
+    href:'',
   },
   {
-    title: '操作三',
-    href: '',
+    title:'Operation Three',
+    href:'',
   },
   {
-    title: '操作四',
-    href: '',
+    title:'Operation Four',
+    href:'',
   },
   {
-    title: '操作五',
-    href: '',
+    title:'Operation Five',
+    href:'',
   },
   {
-    title: '操作六',
-    href: '',
+    title:'Operation Six',
+    href:'',
   },
 ];
 
@@ -61,9 +61,9 @@ const PageHeaderContent: React.FC<{ currentUser: CurrentUser }> = ({ currentUser
       </div>
       <div className={styles.content}>
         <div className={styles.contentTitle}>
-          早安，
+          good Morning,
           {currentUser.name}
-          ，祝你开心每一天！
+          ,Hope you will be happy every day!
         </div>
         <div>
           {currentUser.title} |{currentUser.group}
@@ -76,29 +76,29 @@ const PageHeaderContent: React.FC<{ currentUser: CurrentUser }> = ({ currentUser
 const ExtraContent: React.FC<{}> = () => (
   <div className={styles.extraContent}>
     <div className={styles.statItem}>
-      <Statistic title="项目数" value={56} />
+      <Statistic title="Number of items" value={56} />
     </div>
     <div className={styles.statItem}>
-      <Statistic title="团队内排名" value={8} suffix="/ 24" />
+      <Statistic title="Rank within the team" value={8} suffix="/ 24" />
     </div>
     <div className={styles.statItem}>
-      <Statistic title="项目访问" value={2223} />
+      <Statistic title="Project access" value={2223} />
     </div>
   </div>
 );
 
 class Workplace extends Component<WorkplaceProps> {
   componentDidMount() {
-    const { dispatch } = this.props;
+    const {dispatch} = this.props;
     dispatch({
-      type: 'dashboardAndworkplace/init',
+      type:'dashboardAndworkplace/init',
     });
   }
 
   componentWillUnmount() {
-    const { dispatch } = this.props;
+    const {dispatch} = this.props;
     dispatch({
-      type: 'dashboardAndworkplace/clear',
+      type:'dashboardAndworkplace/clear',
     });
   }
 
@@ -157,9 +157,9 @@ class Workplace extends Component<WorkplaceProps> {
             <Card
               className={styles.projectList}
               style={{ marginBottom: 24 }}
-              title="进行中的项目"
+              title="Project in progress"
               bordered={false}
-              extra={<Link to="/">全部项目</Link>}
+              extra={<Link to="/">All projects</Link>}
               loading={projectLoading}
               bodyStyle={{ padding: 0 }}
             >
@@ -176,7 +176,7 @@ class Workplace extends Component<WorkplaceProps> {
                       description={item.description}
                     />
                     <div className={styles.projectItemContent}>
-                      <Link to={item.memberLink}>{item.member || ''}</Link>
+                      <Link to={item.memberLink}>{item.member ||''}</Link>
                       {item.updatedAt && (
                         <span className={styles.datetime} title={item.updatedAt}>
                           {moment(item.updatedAt).fromNow()}
@@ -191,7 +191,7 @@ class Workplace extends Component<WorkplaceProps> {
               bodyStyle={{ padding: 0 }}
               bordered={false}
               className={styles.activeCard}
-              title="动态"
+              title="dynamic"
               loading={activitiesLoading}
             >
               <List<ActivitiesType>
@@ -206,7 +206,7 @@ class Workplace extends Component<WorkplaceProps> {
           <Col xl={8} lg={24} md={24} sm={24} xs={24}>
             <Card
               style={{ marginBottom: 24 }}
-              title="快速开始 / 便捷导航"
+              title="Quick Start / Convenient Navigation"
               bordered={false}
               bodyStyle={{ padding: 0 }}
             >
@@ -215,7 +215,7 @@ class Workplace extends Component<WorkplaceProps> {
             <Card
               style={{ marginBottom: 24 }}
               bordered={false}
-              title="XX 指数"
+              title="XX Index"
               loading={radarData.length === 0}
             >
               <div className={styles.chart}>
@@ -225,7 +225,7 @@ class Workplace extends Component<WorkplaceProps> {
             <Card
               bodyStyle={{ paddingTop: 12, paddingBottom: 12 }}
               bordered={false}
-              title="团队"
+              title="Team"
               loading={projectLoading}
             >
               <div className={styles.members}>
@@ -250,7 +250,7 @@ class Workplace extends Component<WorkplaceProps> {
 
 export default connect(
   ({
-    dashboardAndworkplace: { currentUser, projectNotice, activities, radarData },
+    dashboardAndworkplace: {currentUser, projectNotice, activities, radarData },
     loading,
   }: {
     dashboardAndworkplace: ModalState;

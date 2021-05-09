@@ -1,11 +1,11 @@
-import moment from 'moment';
-import type { VisitDataType } from './data.d';
+import moment from'moment';
+import type {VisitDataType} from'./data.d';
 // mock data
 const visitData: VisitDataType[] = [];
 const beginDay = new Date().getTime();
 
 const fakeY = [7, 5, 4, 2, 4, 7, 5, 6, 5, 9, 6, 3, 1, 5, 3, 6, 5];
-for (let i = 0; i < fakeY.length; i += 1) {
+for (let i = 0; i <fakeY.length; i += 1) {
   visitData.push({
     x: moment(new Date(beginDay + 1000 * 60 * 60 * 24 * i)).format('YYYY-MM-DD'),
     y: fakeY[i],
@@ -14,7 +14,7 @@ for (let i = 0; i < fakeY.length; i += 1) {
 
 const visitData2 = [];
 const fakeY2 = [1, 6, 4, 8, 3, 7, 2];
-for (let i = 0; i < fakeY2.length; i += 1) {
+for (let i = 0; i <fakeY2.length; i += 1) {
   visitData2.push({
     x: moment(new Date(beginDay + 1000 * 60 * 60 * 24 * i)).format('YYYY-MM-DD'),
     y: fakeY2[i],
@@ -22,108 +22,108 @@ for (let i = 0; i < fakeY2.length; i += 1) {
 }
 
 const salesData = [];
-for (let i = 0; i < 12; i += 1) {
+for (let i = 0; i <12; i += 1) {
   salesData.push({
-    x: `${i + 1}月`,
+    x: `${i + 1}month`,
     y: Math.floor(Math.random() * 1000) + 200,
   });
 }
 const searchData = [];
-for (let i = 0; i < 50; i += 1) {
+for (let i = 0; i <50; i += 1) {
   searchData.push({
     index: i + 1,
-    keyword: `搜索关键词-${i}`,
+    keyword: `Search keyword-${i}`,
     count: Math.floor(Math.random() * 1000),
     range: Math.floor(Math.random() * 100),
-    status: Math.floor((Math.random() * 10) % 2),
+    status: Math.floor((Math.random() * 10)% 2),
   });
 }
 const salesTypeData = [
   {
-    x: '家用电器',
+    x:'Household appliances',
     y: 4544,
   },
   {
-    x: '食用酒水',
+    x:'edible wine',
     y: 3321,
   },
   {
-    x: '个护健康',
+    x:'Personal health care',
     y: 3113,
   },
   {
-    x: '服饰箱包',
+    x:'clothing luggage',
     y: 2341,
   },
   {
-    x: '母婴产品',
+    x:'Mother and baby products',
     y: 1231,
   },
   {
-    x: '其他',
+    x:'Other',
     y: 1231,
   },
 ];
 
 const salesTypeDataOnline = [
   {
-    x: '家用电器',
+    x:'Household appliances',
     y: 244,
   },
   {
-    x: '食用酒水',
+    x:'edible wine',
     y: 321,
   },
   {
-    x: '个护健康',
+    x:'Personal health care',
     y: 311,
   },
   {
-    x: '服饰箱包',
+    x:'clothing luggage',
     y: 41,
   },
   {
-    x: '母婴产品',
+    x:'Mother and baby products',
     y: 121,
   },
   {
-    x: '其他',
+    x:'Other',
     y: 111,
   },
 ];
 
 const salesTypeDataOffline = [
   {
-    x: '家用电器',
+    x:'Household appliances',
     y: 99,
   },
   {
-    x: '食用酒水',
+    x:'edible wine',
     y: 188,
   },
   {
-    x: '个护健康',
+    x:'Personal health care',
     y: 344,
   },
   {
-    x: '服饰箱包',
+    x:'clothing luggage',
     y: 255,
   },
   {
-    x: '其他',
+    x:'Other',
     y: 65,
   },
 ];
 
 const offlineData = [];
-for (let i = 0; i < 10; i += 1) {
+for (let i = 0; i <10; i += 1) {
   offlineData.push({
     name: `Stores ${i}`,
     cvr: Math.ceil(Math.random() * 9) / 10,
   });
 }
 const offlineChartData = [];
-for (let i = 0; i < 20; i += 1) {
+for (let i = 0; i <20; i += 1) {
   offlineChartData.push({
     x: new Date().getTime() + 1000 * 60 * 30 * i,
     y1: Math.floor(Math.random() * 100) + 10,
@@ -167,279 +167,278 @@ const avatars2 = [
 
 const getNotice = [
   {
-    id: 'xxx1',
+    id:'xxx1',
     title: titles[0],
     logo: avatars[0],
-    description: '那是一种内在的东西，他们到达不了，也无法触及的',
+    description:"It's an inner thing, they can't reach it, and they can't reach it",
     updatedAt: new Date(),
-    member: '科学搬砖组',
-    href: '',
-    memberLink: '',
+    member:'Scientific Moving Brick Group',
+    href:'',
+    memberLink:'',
   },
   {
-    id: 'xxx2',
+    id:'xxx2',
     title: titles[1],
     logo: avatars[1],
-    description: '希望是一个好东西，也许是最好的，好东西是不会消亡的',
+    description:'Hope is a good thing, maybe the best, good things will not die out',
     updatedAt: new Date('2017-07-24'),
-    member: '全组都是吴彦祖',
-    href: '',
-    memberLink: '',
+    member:'All groups are Wu Yanzu',
+    href:'',
+    memberLink:'',
   },
   {
-    id: 'xxx3',
+    id:'xxx3',
     title: titles[2],
     logo: avatars[2],
-    description: '城镇中有那么多的酒馆，她却偏偏走进了我的酒馆',
+    description:'There are so many taverns in the town, but she just walked into my tavern',
     updatedAt: new Date(),
-    member: '中二少女团',
-    href: '',
-    memberLink: '',
+    member:'Second Girl Group',
+    href:'',
+    memberLink:'',
   },
   {
-    id: 'xxx4',
+    id:'xxx4',
     title: titles[3],
     logo: avatars[3],
-    description: '那时候我只会想自己想要什么，从不想自己拥有什么',
+    description:"At that time I only thought about what I wanted, never wanted to have what I had",
     updatedAt: new Date('2017-07-23'),
-    member: '程序员日常',
-    href: '',
-    memberLink: '',
+    member:"Programmer's daily",
+    href:'',
+    memberLink:'',
   },
   {
-    id: 'xxx5',
+    id:'xxx5',
     title: titles[4],
     logo: avatars[4],
-    description: '凛冬将至',
+    description:'Winter is coming',
     updatedAt: new Date('2017-07-23'),
-    member: '高逼格设计天团',
-    href: '',
-    memberLink: '',
+    member:'Highly Forced Design Tiantu',
+    href:'',
+    memberLink:'',
   },
   {
-    id: 'xxx6',
+    id:'xxx6',
     title: titles[5],
     logo: avatars[5],
-    description: '生命就像一盒巧克力，结果往往出人意料',
+    description:'Life is like a box of chocolates, the results are often unexpected',
     updatedAt: new Date('2017-07-23'),
-    member: '骗你来学计算机',
-    href: '',
-    memberLink: '',
+    member:'Cheat you to learn computer',
+    href:'',
+    memberLink:'',
   },
 ];
 
 const getActivities = [
-  {
-    id: 'trend-1',
-    updatedAt: new Date(),
-    user: {
-      name: '曲丽丽',
-      avatar: avatars2[0],
-    },
-    group: {
-      name: '高逼格设计天团',
-      link: 'http://github.com/',
-    },
-    project: {
-      name: '六月迭代',
-      link: 'http://github.com/',
-    },
-    template: '在 @{group} 新建项目 @{project}',
+  {id:'trend-1',
+  updatedAt: new Date(),
+  user: {
+    name:'Qu Lili',
+    avatar: avatars2[0],
   },
-  {
-    id: 'trend-2',
-    updatedAt: new Date(),
-    user: {
-      name: '付小小',
-      avatar: avatars2[1],
-    },
-    group: {
-      name: '高逼格设计天团',
-      link: 'http://github.com/',
-    },
-    project: {
-      name: '六月迭代',
-      link: 'http://github.com/',
-    },
-    template: '在 @{group} 新建项目 @{project}',
+  group: {
+    name:'Highly Forced Design Sky Mission',
+    link:'http://github.com/',
   },
-  {
-    id: 'trend-3',
-    updatedAt: new Date(),
-    user: {
-      name: '林东东',
-      avatar: avatars2[2],
-    },
-    group: {
-      name: '中二少女团',
-      link: 'http://github.com/',
-    },
-    project: {
-      name: '六月迭代',
-      link: 'http://github.com/',
-    },
-    template: '在 @{group} 新建项目 @{project}',
+  project: {
+    name:'June Iteration',
+    link:'http://github.com/',
   },
-  {
-    id: 'trend-4',
-    updatedAt: new Date(),
-    user: {
-      name: '周星星',
-      avatar: avatars2[4],
-    },
-    project: {
-      name: '5 月日常迭代',
-      link: 'http://github.com/',
-    },
-    template: '将 @{project} 更新至已发布状态',
+  template:'Create a new project @{project} in @{group}',
+},
+{
+  id:'trend-2',
+  updatedAt: new Date(),
+  user: {
+    name:'Pay Xiaoxiao',
+    avatar: avatars2[1],
   },
-  {
-    id: 'trend-5',
-    updatedAt: new Date(),
-    user: {
-      name: '朱偏右',
-      avatar: avatars2[3],
-    },
-    project: {
-      name: '工程效能',
-      link: 'http://github.com/',
-    },
-    comment: {
-      name: '留言',
-      link: 'http://github.com/',
-    },
-    template: '在 @{project} 发布了 @{comment}',
+  group: {
+    name:'Highly Forced Design Sky Mission',
+    link:'http://github.com/',
   },
-  {
-    id: 'trend-6',
-    updatedAt: new Date(),
-    user: {
-      name: '乐哥',
-      avatar: avatars2[5],
-    },
-    group: {
-      name: '程序员日常',
-      link: 'http://github.com/',
-    },
-    project: {
-      name: '品牌迭代',
-      link: 'http://github.com/',
-    },
-    template: '在 @{group} 新建项目 @{project}',
+  project: {
+    name:'June Iteration',
+    link:'http://github.com/',
   },
+  template:'Create a new project @{project} in @{group}',
+},
+{
+  id:'trend-3',
+  updatedAt: new Date(),
+  user: {
+    name:'Lin Dongdong',
+    avatar: avatars2[2],
+  },
+  group: {
+    name:'Second Girl Group',
+    link:'http://github.com/',
+  },
+  project: {
+    name:'June Iteration',
+    link:'http://github.com/',
+  },
+  template:'Create a new project @{project} in @{group}',
+},
+{
+  id:'trend-4',
+  updatedAt: new Date(),
+  user: {
+    name:'Zhou Xingxing',
+    avatar: avatars2[4],
+  },
+  project: {
+    name:'May daily iteration',
+    link:'http://github.com/',
+  },
+  template:'Update @{project} to published state',
+},
+{
+  id:'trend-5',
+  updatedAt: new Date(),
+  user: {
+    name:'Zhu right',
+    avatar: avatars2[3],
+  },
+  project: {
+    name:'Engineering efficiency',
+    link:'http://github.com/',
+  },
+  comment: {
+    name:'Message',
+    link:'http://github.com/',
+  },
+  template:'posted @{comment} in @{project}',
+},
+{
+  id:'trend-6',
+  updatedAt: new Date(),
+  user: {
+    name:'Lege',
+    avatar: avatars2[5],
+  },
+  group: {
+    name:"Programmer's daily",
+    link:'http://github.com/',
+  },
+  project: {
+    name:'Brand iteration',
+    link:'http://github.com/',
+  },
+  template:'Create a new project @{project} in @{group}',
+},
 ];
 
 const radarOriginData = [
-  {
-    name: '个人',
-    ref: 10,
-    koubei: 8,
-    output: 4,
-    contribute: 5,
-    hot: 7,
-  },
-  {
-    name: '团队',
-    ref: 3,
-    koubei: 9,
-    output: 6,
-    contribute: 3,
-    hot: 1,
-  },
-  {
-    name: '部门',
-    ref: 4,
-    koubei: 1,
-    output: 6,
-    contribute: 5,
-    hot: 7,
-  },
+{
+  name:'personal',
+  ref: 10,
+  koubei: 8,
+  output: 4,
+  contribute: 5,
+  hot: 7,
+},
+{
+  name:'Team',
+  ref: 3,
+  koubei: 9,
+  output: 6,
+  contribute: 3,
+  hot: 1,
+},
+{
+  name:'Department',
+  ref: 4,
+  koubei: 1,
+  output: 6,
+  contribute: 5,
+  hot: 7,
+},
 ];
 
 const radarData: any[] = [];
 const radarTitleMap = {
-  ref: '引用',
-  koubei: '口碑',
-  output: '产量',
-  contribute: '贡献',
-  hot: '热度',
+ref:'reference',
+koubei:'Word of mouth',
+output:'Yield',
+contribute:'Contribute',
+hot:'Hotness',
 };
 radarOriginData.forEach((item) => {
-  Object.keys(item).forEach((key) => {
-    if (key !== 'name') {
-      radarData.push({
-        name: item.name,
-        label: radarTitleMap[key],
-        value: item[key],
-      });
-    }
-  });
+Object.keys(item).forEach((key) => {
+  if (key !=='name') {
+    radarData.push({
+      name: item.name,
+      label: radarTitleMap[key],
+      value: item[key],
+    });
+  }
+});
 });
 
 export default {
-  'GET  /api/project/notice': getNotice,
-  'GET  /api/activities': getActivities,
-  'GET  /api/fake_chart_data': {
-    visitData,
-    visitData2,
-    salesData,
-    searchData,
-    offlineData,
-    offlineChartData,
-    salesTypeData,
-    salesTypeDataOnline,
-    salesTypeDataOffline,
-    radarData,
-  },
+'GET /api/project/notice': getNotice,
+'GET /api/activities': getActivities,
+'GET /api/fake_chart_data': {
+  visitData,
+  visitData2,
+  salesData,
+  searchData,
+  offlineData,
+  offlineChartData,
+  salesTypeData,
+  salesTypeDataOnline,
+  salesTypeDataOffline,
+  radarData,
+},
 
-  'GET  /api/currentUser': {
-    name: 'Serati Ma',
-    avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
-    userid: '00000001',
-    email: 'antdesign@alipay.com',
-    signature: '海纳百川，有容乃大',
-    title: '交互专家',
-    group: '蚂蚁金服－某某某事业群－某某平台部－某某技术部－UED',
-    tags: [
-      {
-        key: '0',
-        label: '很有想法的',
-      },
-      {
-        key: '1',
-        label: '专注设计',
-      },
-      {
-        key: '2',
-        label: '辣~',
-      },
-      {
-        key: '3',
-        label: '大长腿',
-      },
-      {
-        key: '4',
-        label: '川妹子',
-      },
-      {
-        key: '5',
-        label: '海纳百川',
-      },
-    ],
-    notifyCount: 12,
-    unreadCount: 11,
-    country: 'China',
-    geographic: {
-      province: {
-        label: '浙江省',
-        key: '330000',
-      },
-      city: {
-        label: '杭州市',
-        key: '330100',
-      },
+'GET /api/currentUser': {
+  name:'rename-me',
+  avatar:'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
+  userid: '00000001',
+  email:'antdesign@alipay.com',
+  signature:'Inclusive of all rivers, tolerance is great',
+  title:'Interaction Expert',
+  group:'Ant Financial Services-XX Business Group-XX Platform Department-XX Technical Department-UED',
+  tags: [
+    {
+      key: '0',
+      label:'Very thoughtful',
     },
-    address: '西湖区工专路 77 号',
-    phone: '0752-268888888',
+    {
+      key: '1',
+      label:'Focus on design',
+    },
+    {
+      key: '2',
+      label:'Spicy~',
+    },
+    {
+      key: '3',
+      label:'Long legs',
+    },
+    {
+      key: '4',
+      label:'Chuanmeizi',
+    },
+    {
+      key: '5',
+      label:'Inclusive of all rivers',
+    },
+  ],
+  notifyCount: 12,
+  unreadCount: 11,
+  country:'China',
+  geographic: {
+    province: {
+      label:'Zhejiang',
+      key: '330000',
+    },
+    city: {
+      label:'Hangzhou City',
+      key: '330100',
+    },
   },
+  address: '77 Gongzhuan Road, Xihu District',
+  phone: '0752-268888888',
+},
 };

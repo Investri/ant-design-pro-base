@@ -1,9 +1,9 @@
-import type { AxisProps} from 'bizcharts';
-import { Axis, Chart, Geom, Tooltip } from 'bizcharts';
+import type {AxisProps} from'bizcharts';
+import {Axis, Chart, Geom, Tooltip} from'bizcharts';
 
-import React from 'react';
-import autoHeight from '../autoHeight';
-import styles from '../index.less';
+import React from'react';
+import autoHeight from'../autoHeight';
+import styles from'../index.less';
 
 export interface MiniAreaProps {
   color?: string;
@@ -34,9 +34,9 @@ const MiniArea: React.FC<MiniAreaProps> = (props) => {
     height = 1,
     data = [],
     forceFit = true,
-    color = 'rgba(24, 144, 255, 0.2)',
-    borderColor = '#1089ff',
-    scale = { x: {}, y: {} },
+    color ='rgba(24, 144, 255, 0.2)',
+    borderColor ='#1089ff',
+    scale = {x: {}, y: {} },
     borderWidth = 2,
     line,
     xAxis,
@@ -48,7 +48,7 @@ const MiniArea: React.FC<MiniAreaProps> = (props) => {
 
   const scaleProps = {
     x: {
-      type: 'cat',
+      type:'cat',
       range: [0, 1],
       ...scale.x,
     },
@@ -58,7 +58,7 @@ const MiniArea: React.FC<MiniAreaProps> = (props) => {
     },
   };
 
-  const tooltip: [string, (...args: any[]) => { name?: string; value: string }] = [
+  const tooltip: [string, (...args: any[]) => {name?: string; value: string }] = [
     'x*y',
     (x: string, y: string) => ({
       name: x,
@@ -71,7 +71,7 @@ const MiniArea: React.FC<MiniAreaProps> = (props) => {
   return (
     <div className={styles.miniChart} style={{ height }}>
       <div className={styles.chartContent}>
-        {height > 0 && (
+        {height> 0 && (
           <Chart
             animate={animate}
             scale={scaleProps}
@@ -109,7 +109,7 @@ const MiniArea: React.FC<MiniAreaProps> = (props) => {
                 fillOpacity: 1,
               }}
             />
-            {line ? (
+            {line? (
               <Geom
                 type="line"
                 position="x*y"
@@ -118,8 +118,8 @@ const MiniArea: React.FC<MiniAreaProps> = (props) => {
                 size={borderWidth}
                 tooltip={false}
               />
-            ) : (
-              <span style={{ display: 'none' }} />
+            ): (
+              <span style={{ display:'none' }} />
             )}
           </Chart>
         )}

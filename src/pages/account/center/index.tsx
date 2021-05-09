@@ -17,7 +17,7 @@ const operationTabList = [
     key: 'articles',
     tab: (
       <span>
-        文章 <span style={{ fontSize: 14 }}>(8)</span>
+        Articles <span style={{ fontSize: 14 }}>(8)</span>
       </span>
     ),
   },
@@ -25,7 +25,7 @@ const operationTabList = [
     key: 'applications',
     tab: (
       <span>
-        应用 <span style={{ fontSize: 14 }}>(8)</span>
+        Applications <span style={{ fontSize: 14 }}>(8)</span>
       </span>
     ),
   },
@@ -33,7 +33,7 @@ const operationTabList = [
     key: 'projects',
     tab: (
       <span>
-        项目 <span style={{ fontSize: 14 }}>(8)</span>
+        Projects <span style={{ fontSize: 14 }}>(8)</span>
       </span>
     ),
   },
@@ -78,7 +78,7 @@ const TagList: React.FC<{ tags: CurrentUser['tags'] }> = ({ tags }) => {
 
   return (
     <div className={styles.tags}>
-      <div className={styles.tagsTitle}>标签</div>
+      <div className={styles.tagsTitle}>Tags</div>
       {(tags || []).concat(newTags).map((item) => (
         <Tag key={item.key}>{item.label}</Tag>
       ))}
@@ -219,7 +219,7 @@ class Center extends Component<CenterProps, CenterState> {
                   <TagList tags={currentUser.tags || []} />
                   <Divider style={{ marginTop: 16 }} dashed />
                   <div className={styles.team}>
-                    <div className={styles.teamTitle}>团队</div>
+                    <div className={styles.teamTitle}>Title</div>
                     <Row gutter={36}>
                       {currentUser.notice &&
                         currentUser.notice.map((item) => (

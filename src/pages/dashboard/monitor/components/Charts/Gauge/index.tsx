@@ -1,9 +1,9 @@
-import { Axis, Chart, Coord, Geom, Guide, Shape } from 'bizcharts';
+import {Axis, Chart, Coord, Geom, Guide, Shape} from'bizcharts';
 
-import React from 'react';
-import autoHeight from '../autoHeight';
+import React from'react';
+import autoHeight from'../autoHeight';
 
-const { Arc, Html, Line } = Guide;
+const {Arc, Html, Line} = Guide;
 
 export interface GaugeProps {
   title: React.ReactNode;
@@ -19,20 +19,20 @@ export interface GaugeProps {
 const defaultFormatter = (val: string): string => {
   switch (val) {
     case '2':
-      return '差';
+      return'bad';
     case '4':
-      return '中';
+      return'meh';
     case '6':
-      return '良';
+      return'good';
     case '8':
-      return '优';
+      return'excellent';
     default:
-      return '';
+      return'';
   }
 };
 
 if (Shape.registerShape) {
-  Shape.registerShape('point', 'pointer', {
+  Shape.registerShape('point','pointer', {
     drawShape(cfg: any, group: any) {
       let point = cfg.points[0];
       point = (this as any).parsePoint(point);
@@ -48,7 +48,7 @@ if (Shape.registerShape) {
           y2: point.y,
           stroke: cfg.color,
           lineWidth: 2,
-          lineCap: 'round',
+          lineCap:'round',
         },
       });
       return group.addShape('circle', {
@@ -58,7 +58,7 @@ if (Shape.registerShape) {
           r: 6,
           stroke: cfg.color,
           lineWidth: 3,
-          fill: '#fff',
+          fill:'#fff',
         },
       });
     },
@@ -72,12 +72,12 @@ const Gauge: React.FC<GaugeProps> = (props) => {
     percent,
     forceFit = true,
     formatter = defaultFormatter,
-    color = '#2F9CFF',
-    bgColor = '#F0F2F5',
+    color ='#2F9CFF',
+    bgColor ='#F0F2F5',
   } = props;
   const cols = {
     value: {
-      type: 'linear',
+      type:'linear',
       min: 0,
       max: 10,
       tickCount: 6,
@@ -97,11 +97,11 @@ const Gauge: React.FC<GaugeProps> = (props) => {
   const textStyle: {
     fontSize: number;
     fill: string;
-    textAlign: 'center';
+    textAlign:'center';
   } = {
     fontSize: 12,
-    fill: 'rgba(0, 0, 0, 0.65)',
-    textAlign: 'center',
+    fill:'rgba(0, 0, 0, 0.65)',
+    textAlign:'center',
   };
   return (
     <Chart height={height} data={data} scale={cols} padding={[-16, 0, 16, 0]} forceFit={forceFit}>

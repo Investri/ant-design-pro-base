@@ -1,9 +1,9 @@
-import { Axis, Chart, Coord, Geom, Tooltip } from 'bizcharts';
-import { Col, Row } from 'antd';
-import React, { Component } from 'react';
+import {Axis, Chart, Coord, Geom, Tooltip} from'bizcharts';
+import {Col, Row} from'antd';
+import React, {Component} from'react';
 
-import autoHeight from './autoHeight';
-import styles from './index.less';
+import autoHeight from'./autoHeight';
+import styles from'./index.less';
 
 export interface RadarProps {
   title?: React.ReactNode;
@@ -45,7 +45,7 @@ class Radar extends Component<RadarProps, RadarState> {
   }
 
   componentDidUpdate(preProps: RadarProps) {
-    const { data } = this.props;
+    const {data} = this.props;
     if (data !== preProps.data) {
       this.getLegendData();
     }
@@ -58,11 +58,11 @@ class Radar extends Component<RadarProps, RadarState> {
   // for custom lengend view
   getLegendData = () => {
     if (!this.chart) return;
-    const geom = this.chart.getAllGeoms()[0]; // 获取所有的图形
+    const geom = this.chart.getAllGeoms()[0]; // Get all the graphics
     if (!geom) return;
-    const items = (geom as any).get('dataArray') || []; // 获取图形对应的
+    const items = (geom as any).get('dataArray') || []; // Get graphics corresponding
 
-    const legendData = items.map((item: { color: any; _origin: any }[]) => {
+    const legendData = items.map((item: {color: any; _origin: any }[]) => {
       // eslint-disable-next-line no-underscore-dangle
       const origins = item.map((t) => t._origin);
       const result = {
@@ -94,13 +94,13 @@ class Radar extends Component<RadarProps, RadarState> {
     const newItem = item;
     newItem.checked = !newItem.checked;
 
-    const { legendData } = this.state;
+    const {legendData} = this.state;
     legendData[i] = newItem;
 
     const filteredLegendData = legendData.filter((l) => l.checked).map((l) => l.name);
 
     if (this.chart) {
-      this.chart.filter('name', (val) => filteredLegendData.indexOf(`${val}`) > -1);
+      this.chart.filter('name', (val) => filteredLegendData.indexOf(`${val}`)> -1);
       this.chart.repaint();
     }
 
@@ -133,7 +133,7 @@ class Radar extends Component<RadarProps, RadarState> {
       colors = defaultColors,
     } = this.props;
 
-    const { legendData } = this.state;
+    const {legendData} = this.state;
 
     const scale = {
       value: {
@@ -142,7 +142,7 @@ class Radar extends Component<RadarProps, RadarState> {
       },
     };
 
-    const chartHeight = height - (hasLegend ? 80 : 22);
+    const chartHeight = height-(hasLegend? 80: 22);
 
     return (
       <div className={styles.radar} style={{ height }}>
@@ -172,7 +172,7 @@ class Radar extends Component<RadarProps, RadarState> {
           <Axis
             name="value"
             grid={{
-              type: 'polygon',
+              type:'polygon',
               lineStyle: {
                 lineDash: undefined,
               },
@@ -200,20 +200,19 @@ class Radar extends Component<RadarProps, RadarState> {
                     <span
                       className={styles.dot}
                       style={{
-                        backgroundColor: !item.checked ? '#aaa' : item.color,
+                        backgroundColor: !item.checked?'#aaa': item.color,
                       }}
                     />
                     <span>{item.name}</span>
                   </p>
                   <h6>{item.value}</h6>
-                </div>
-              </Col>
-            ))}
-          </Row>
-        )}
-      </div>
-    );
-  }
+                </div></Col>
+             ))}
+           </Row>
+         )}
+       </div>
+     );
+   }
 }
 
 export default autoHeight()(Radar);

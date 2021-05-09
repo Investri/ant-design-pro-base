@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, {Component} from'react';
 
-import { Input } from 'antd';
-import { PageContainer } from '@ant-design/pro-layout';
-import { history } from 'umi';
+import {Input} from'antd';
+import {PageContainer} from'@ant-design/pro-layout';
+import {history} from'umi';
 
 interface SearchProps {
   match: {
@@ -16,16 +16,16 @@ interface SearchProps {
 
 class Search extends Component<SearchProps> {
   handleTabChange = (key: string) => {
-    const { match } = this.props;
-    const url = match.url === '/' ? '' : match.url;
+    const {match} = this.props;
+    const url = match.url ==='/'?'': match.url;
     switch (key) {
-      case 'articles':
+      case'articles':
         history.push(`${url}/articles`);
         break;
-      case 'applications':
+      case'applications':
         history.push(`${url}/applications`);
         break;
-      case 'projects':
+      case'projects':
         history.push(`${url}/projects`);
         break;
       default:
@@ -39,36 +39,36 @@ class Search extends Component<SearchProps> {
   };
 
   getTabKey = () => {
-    const { match, location } = this.props;
-    const url = match.path === '/' ? '' : match.path;
-    const tabKey = location.pathname.replace(`${url}/`, '');
-    if (tabKey && tabKey !== '/') {
+    const {match, location} = this.props;
+    const url = match.path ==='/'?'': match.path;
+    const tabKey = location.pathname.replace(`${url}/`,'');
+    if (tabKey && tabKey !=='/') {
       return tabKey;
     }
-    return 'articles';
+    return'articles';
   };
 
   render() {
     const tabList = [
       {
-        key: 'articles',
-        tab: '文章',
+        key:'articles',
+        tab:'Article',
       },
       {
-        key: 'projects',
-        tab: '项目',
+        key:'projects',
+        tab:'Project',
       },
       {
-        key: 'applications',
-        tab: '应用',
+        key:'applications',
+        tab:'Application',
       },
     ];
 
     const mainSearch = (
-      <div style={{ textAlign: 'center' }}>
+      <div style={{ textAlign:'center' }}>
         <Input.Search
-          placeholder="请输入"
-          enterButton="搜索"
+          placeholder="Please enter"
+          enterButton="Search"
           size="large"
           onSearch={this.handleFormSubmit}
           style={{ maxWidth: 522, width: '100%' }}
@@ -76,7 +76,7 @@ class Search extends Component<SearchProps> {
       </div>
     );
 
-    const { children } = this.props;
+    const {children} = this.props;
 
     return (
       <PageContainer

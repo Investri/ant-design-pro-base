@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import type { Request, Response } from 'express';
-import city from './geographic/city.json';
-import province from './geographic/province.json';
+import type {Request, Response} from'express';
+import city from'./geographic/city.json';
+import province from'./geographic/province.json';
 
 function getProvince(_: Request, res: Response) {
   return res.json(province);
@@ -10,59 +10,59 @@ function getProvince(_: Request, res: Response) {
 function getCity(req: Request, res: Response) {
   return res.json(city[req.params.province]);
 }
-// 代码中会兼容本地 service mock 以及部署站点的静态数据
+// The code will be compatible with the local service mock and the static data of the deployment site
 export default {
-  // 支持值为 Object 和 Array
-  'GET  /api/currentUser': {
-    name: 'Serati Ma',
-    avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
+  // Supported values ​​are Object and Array
+  'GET /api/currentUser': {
+    name:'rename-me',
+    avatar:'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
     userid: '00000001',
-    email: 'antdesign@alipay.com',
-    signature: '海纳百川，有容乃大',
-    title: '交互专家',
-    group: '蚂蚁金服－某某某事业群－某某平台部－某某技术部－UED',
+    email:'antdesign@alipay.com',
+    signature:'Inclusive of all rivers, tolerance is great',
+    title:'Interaction Expert',
+    group:'Ant Financial Services-XX Business Group-XX Platform Department-XX Technical Department-UED',
     tags: [
       {
         key: '0',
-        label: '很有想法的',
+        label:'Very thoughtful',
       },
       {
         key: '1',
-        label: '专注设计',
+        label:'Focus on design',
       },
       {
         key: '2',
-        label: '辣~',
+        label:'Spicy~',
       },
       {
         key: '3',
-        label: '大长腿',
+        label:'Long legs',
       },
       {
         key: '4',
-        label: '川妹子',
+        label:'Chuanmeizi',
       },
       {
         key: '5',
-        label: '海纳百川',
+        label:'Inclusive of all rivers',
       },
     ],
     notifyCount: 12,
     unreadCount: 11,
-    country: 'China',
+    country:'China',
     geographic: {
       province: {
-        label: '浙江省',
+        label:'Zhejiang',
         key: '330000',
       },
       city: {
-        label: '杭州市',
+        label:'Hangzhou City',
         key: '330100',
       },
     },
-    address: '西湖区工专路 77 号',
+    address: '77 Gongzhuan Road, Xihu District',
     phone: '0752-268888888',
   },
-  'GET  /api/geographic/province': getProvince,
-  'GET  /api/geographic/city/:province': getCity,
+  'GET /api/geographic/province': getProvince,
+  'GET /api/geographic/city/:province': getCity,
 };

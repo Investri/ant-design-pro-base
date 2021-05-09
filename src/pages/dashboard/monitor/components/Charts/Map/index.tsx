@@ -1,8 +1,9 @@
-import * as React from 'react';
-import { HeatmapLayer, MapboxScene, PointLayer } from '@antv/l7-react';
+import * as React from'react';
+import {HeatmapLayer, MapboxScene, PointLayer} from'@antv/l7-react';
+// import {PageLoading} from'@ant-design/pro-layout';
 import { PageLoading } from '@ant-design/pro-layout';
 
-const colors = ['#eff3ff', '#c6dbef', '#9ecae1', '#6baed6', '#4292c6', '#2171b5', '#084594'];
+const colors = ['#eff3ff','#c6dbef','#9ecae1','#6baed6','#4292c6','#2171b5','#084594'];
 export default class Map extends React.Component {
   state = {
     data: null,
@@ -27,19 +28,19 @@ export default class Map extends React.Component {
   }
 
   public render() {
-    const { data, grid, loading } = this.state;
-    return loading === false ? (
+    const {data, grid, loading} = this.state;
+    return loading === false? (
       <PageLoading />
-    ) : (
+    ): (
       <MapboxScene
         map={{
           center: [110.19382669582967, 50.258134],
           pitch: 0,
-          style: 'blank',
+          style:'blank',
           zoom: 1,
         }}
         style={{
-          position: 'relative',
+          position:'relative',
           width: '100%',
           height: '452px',
         }}
@@ -51,18 +52,18 @@ export default class Map extends React.Component {
               data: grid,
               transforms: [
                 {
-                  type: 'hexagon',
+                  type:'hexagon',
                   size: 800000,
-                  field: 'capacity',
-                  method: 'sum',
+                  field:'capacity',
+                  method:'sum',
                 },
               ],
             }}
             color={{
-              values: '#ddd',
+              values:'#ddd',
             }}
             shape={{
-              values: 'hexagon',
+              values:'hexagon',
             }}
             style={{
               coverage: 0.7,
@@ -82,29 +83,29 @@ export default class Map extends React.Component {
             scale={{
               values: {
                 color: {
-                  field: 'cum_conf',
-                  type: 'quantile',
+                  field:'cum_conf',
+                  type:'quantile',
                 },
                 size: {
-                  field: 'cum_conf',
-                  type: 'log',
+                  field:'cum_conf',
+                  type:'log',
                 },
               },
             }}
             color={{
-              field: 'cum_conf',
+              field:'cum_conf',
               values: colors,
             }}
             shape={{
-              values: 'circle',
+              values:'circle',
             }}
             active={{
               option: {
-                color: '#0c2c84',
+                color:'#0c2c84',
               },
             }}
             size={{
-              field: 'cum_conf',
+              field:'cum_conf',
               values: [0, 30],
             }}
             style={{
@@ -117,16 +118,16 @@ export default class Map extends React.Component {
               data,
             }}
             color={{
-              values: '#fff',
+              values:'#fff',
             }}
             shape={{
-              field: 'Short_Name_ZH',
-              values: 'text',
+              field:'Short_Name_ZH',
+              values:'text',
             }}
             filter={{
-              field: 'cum_conf',
+              field:'cum_conf',
               values: (v) => {
-                return v > 2000;
+                return v> 2000;
               },
             }}
             size={{
