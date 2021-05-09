@@ -53,6 +53,11 @@
 
 export default [
 
+    { 
+        path: '/landing',
+        component: './Home',
+        layout: false,
+    },
 
     {
         path: '/user',
@@ -117,7 +122,7 @@ export default [
     },
 
     {
-        path: '/',
+        path: '/dashboard',
         redirect: '/dashboard/analysis',
     },
     {

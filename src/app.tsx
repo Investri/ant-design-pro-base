@@ -150,7 +150,7 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
                 />
               </>
             );
-          },
+        },
 
     };
 };

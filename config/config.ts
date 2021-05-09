@@ -10,7 +10,7 @@ export default defineConfig({
   hash: true,
   antd: {
 
-    // dark: true, // active dark theme
+    dark: true, // active dark theme
     compact: true, // active compact theme
 
   },
