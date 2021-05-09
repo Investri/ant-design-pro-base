@@ -10,7 +10,7 @@ export default defineConfig({
   hash: true,
   antd: {
 
-    dark: true, // active dark theme
+    // dark: true, // active dark theme
     compact: true, // active compact theme
 
   },
@@ -26,7 +26,7 @@ export default defineConfig({
   // https://umijs.org/zh-CN/plugins/plugin-locale
   locale: {
     // default zh-CN
-    default: 'zh-CN',
+    default: 'en-EN',
     antd: true,
     // default true, when it is true, will use `navigator.language` overwrite default
     baseNavigator: true,
